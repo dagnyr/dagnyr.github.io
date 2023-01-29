@@ -1,100 +1,86 @@
----
-layout: default
-title: blog
-pagination:
-  enabled: true
-  collection: posts
-  permalink: /page/:num/
-  per_page: 5
-  sort_field: date
-  sort_reverse: true
-  trail:
-    before: 1 # The number of links before the current page
-    after: 3  # The number of links after the current page
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- default meta tags -->
+    <meta charset="UTF-8">
+    <link data-react-helmet="true" rel="shortcut icon" type="image/png" href="../media/images/blog.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="post">
+    <!-- title -->
+    <title>Nigamanth Srivatsan's Blog</title>
 
-  <div class="header-bar">
-    <h1>{{ site.blog_name }}</h1>
-    <h2>{{ site.blog_description }}</h2>
-  </div>
+    <!-- styles -->
+    <link rel="stylesheet" href="../styles/blog.css">
+</head>
+<body>
+    <header>
+        <div>
+            <img src="../media/images/mailbox-removebg-preview.png" alt="" width="144" height="144">
+        </div>
 
-  {% if site.display_tags %}
-  <div class="tag-list">
-    <ul class="p-0 m-0">
-      {% for tag in site.display_tags %}
-        <li>
-          <i class="fas fa-hashtag fa-sm"></i> <a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">{{ tag }}</a>
-        </li>
-        {% unless forloop.last %}
-          <p>&bull;</p>
-        {% endunless %}
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
+        <div>
+            <h1>Nigamanth's Blog</h1>
+        </div>
+    </header>
 
-  <ul class="post-list">
-    {% for post in paginator.posts %}
+    <div class="blogPostsContainer">
+        <div id="leftPadding">
+            <h1>My Blog Posts:</h1>
+            
+            <select name="filter" id="filter" aria-placeholder="Filter by tags" onchange="sortBlogPosts()">
+                <option disabled selected>Select a topic</option>
+                <option value="comp">Comp Science</option>
+                <option value="economics">Economics</option>
+                <option value="mathematics">Mathematics</option>
+                <option value="physics">Physics</option>
+            </select>
 
-    {% if post.external_source == blank %}
-      {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
-    {% else %}
-      {% assign read_time = post.feed_content | strip_html | number_of_words | divided_by: 180 | plus: 1 %}
-    {% endif %}
-    {% assign year = post.date | date: "%Y" %}
-    {% assign tags = post.tags | join: "" %}
-    {% assign categories = post.categories | join: "" %}
+            <p class="muted big-font">
+                These are my latest blog posts:
+            </p>            
 
-    <li>
-      <h3>
-        {% if post.redirect == blank %}
-          <a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        {% else %}
-          {% if post.redirect contains '://' %}
-            <a class="post-title" href="{{ post.redirect }}" target="_blank">{{ post.title }}</a>
-            <svg width="2rem" height="2rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          {% else %}
-            <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
-          {% endif %}
-        {% endif %}
-      </h3>
-      <p>{{ post.description }}</p>
-      <p class="post-meta">
-        {{ read_time }} min read &nbsp; &middot; &nbsp;
-        {{ post.date | date: '%B %-d, %Y' }}
-        {%- if post.external_source %}
-        &nbsp; &middot; &nbsp; {{ post.external_source }}
-        {%- endif %}
-      </p>
-      <p class="post-tags">
-        <a href="{{ year | prepend: '/blog/' | prepend: site.baseurl}}">
-          <i class="fas fa-calendar fa-sm"></i> {{ year }} </a>
+            <div class="blogGrid">
 
-          {% if tags != "" %}
-          &nbsp; &middot; &nbsp;
-            {% for tag in post.tags %}
-            <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
-              <i class="fas fa-hashtag fa-sm"></i> {{ tag }}</a> &nbsp;
-              {% endfor %}
-          {% endif %}
+                <div class="blogPost comp-science">
+                    <span class="comp-science-label">
+                        
+                    </span>
 
-          {% if categories != "" %}
-          &nbsp; &middot; &nbsp;
-            {% for category in post.categories %}
-            <a href="{{ category | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
-              <i class="fas fa-tag fa-sm"></i> {{ category }}</a> &nbsp;
-              {% endfor %}
-          {% endif %}
-    </p>
-    </li>
+                    <h3>Computer Science Blog </h3>
+                    <p>Blog Description.</p>
 
-    {% endfor %}
-  </ul>
+                    <a href="./comp-science/">
+                        <button class="blogButton">Read More</button>
+                    </a>
+                </div>
 
-  {% include pagination.html %}
+                <div class="blogPost physics">
+                    <span class="physics-label">
+                        Physics
+                    </span>
 
-</div>
+                    <h3>Physics Blog Post</h3>
+                    <p>Blog Description.</p>
+
+                    <a href="">
+                        <button class="blogButton">Read More</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="normal-padding">
+        <h2>Subscribe to my newsletter:</h1>
+        <div class="basic-flex">
+            <input type="email" name="" id="" placeholder="Enter your email">
+            <a href="" target="_blank">
+                <button>Subscribe</button>
+            </a>
+        </div>
+    </div>
+
+    <script src="../logic/blogSort.js"></script>
+</body>
+</html>
