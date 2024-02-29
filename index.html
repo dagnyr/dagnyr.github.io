@@ -26,6 +26,11 @@
     float: left; /* Float the image to the left */
     margin-right: 20px; /* Add some space between the image and text */
   }
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 </style>
 </head>
 
@@ -33,7 +38,7 @@
 
 <h1>dagny reese</h1>
 
-<h2>about</h2> <!-- Moved the "about" title outside the about-section -->
+<h2>about</h2> 
 
 <div class="about-section">
   <img src="/images/profile.jpg" alt="Your Image" class="about-image">
@@ -42,6 +47,7 @@
     <p>Previously, I completed my BSc in Biomedical Sciences and Drug Mechanisms at UCL. My BSc dissertation project at the <a href="https://www.reevescmvlab.com">Reeve's Lab</a> was on the induction of adaptive-like and tissue-resident traits in circulating NK cells in the context of HCMV infection. Prior to that, I was a research assistant at the Biozone Lab for Metabolic Systems Engineering at the University of Toronto's Department of Chemical Engineering. Feel free to email me with any questions about my current or past projects.</p>
   </div>
 </div>
+<div class="clearfix"></div>
 
 <h2>links</h2>
 <ul>
@@ -54,3 +60,4 @@
 
 </body>
 </html>
+
