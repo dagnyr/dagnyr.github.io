@@ -9,18 +9,37 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+   
+    <style>
+      .about-section {
+        display: flex;
+        align-items: center;
+      }
+      .about-text {
+        flex: 1;
+        margin-left: 20px; /* Adjust margin as needed */
+      }
+      .about-image {
+        max-width: 100%; /* Adjust image width as needed */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 200px; /* Adjust image height as needed */
+      }
+    </style>
   </head>
   
   <body>
     
-  <h1>dagny reese</h1>
+    <h1>dagny reese</h1>
 
-    <h2>about</h2>
-    
-    <p>I am currently a second-year MMSc Immunology Student at HMS and a member of the Garcia-Beltran iNK Lab at the Ragon Institute of Harvard, MIT, and MGH. My work is focused on chemokines in the tumour microenvironment and I am also working on other projects related to MPXV (previously known as monkeypox), SARS-CoV-2, and 3D culturing techniques.</p>
+    <div class="about-section">
+      <img src="/images/profile.jpg" alt="Your Image" class="about-image">
+      <div class="about-text">
+        <h2>about</h2>
+        <p>I am currently a second-year MMSc Immunology Student at HMS and a member of the Garcia-Beltran iNK Lab at the Ragon Institute of Harvard, MIT, and MGH. My work is focused on chemokines in the tumour microenvironment and I am also working on other projects related to MPXV (previously known as monkeypox), SARS-CoV-2, and 3D culturing techniques.</p>
+        <p>Previously, I completed my BSc in Biomedical Sciences and Drug Mechanisms at UCL. My BSc dissertation project at the <a href="https://www.reevescmvlab.com">Reeve's Lab</a> was on the induction of adaptive-like and tissue-resident traits in circulating NK cells in the context of HCMV infection. Prior to that, I was a research assistant at the Biozone Lab for Metabolic Systems Engineering at the University of Toronto's Department of Chemical Engineering. Feel free to email me with any questions about my current or past projects.</p>
+      </div>
+    </div>
 
-    <p>Previously, I completed my BSc in Biomedical Sciences and Drug Mechanisms at UCL. My BSc dissertation project at the <a href="https://www.reevescmvlab.com">Reeve's Lab</a> was on the induction of adaptive-like and tissue-resident traits in circulating NK cells in the context of HCMV infection. Prior to that, I was a research assistant at the Biozone Lab for Metabolic Systems Engineering at the University of Toronto's Department of Chemical Engineering. Feel free to email me with any questions about my current or past projects.</p>
-      
     <h2>links</h2>
     <ul>
       <li><a href="mailto:dagnyreese@hms.harvard.edu">email</a></li>
@@ -32,3 +51,4 @@
       
   </body>
 </html>
+
